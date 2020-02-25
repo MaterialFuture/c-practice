@@ -3,7 +3,8 @@
 
 char hello[6];
 char world[6];
-char hw[13];
+char helloworld[20];
+char hw[20];
 int i;
 char user_input[20];
 char first_name[20];
@@ -34,12 +35,17 @@ int main(){
 
     for(i=0; i<6; i++){
         printf("%c", hello[i]);
+        /* strcpy(helloworld, hello[i]); */
     }
     printf(" ");
+    strcpy(helloworld, " ");
+
     for(i=0; i<6; i++){
         printf("%c", world[i]);
+        /* strcpy(helloworld, world[i]); */
     }
     printf("\n");
+    /* printf("%s\n", helloworld); */
 
     /* Print by just assigning a string using the string library */
     strcpy(hw, "Hello World");
