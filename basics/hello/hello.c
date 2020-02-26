@@ -3,12 +3,9 @@
 
 char hello[6];
 char world[6];
-char helloworld[20];
 char hw[20];
 int i;
-char user_input[20];
-char first_name[20];
-char last_name[20];
+char f_name[20];
 
 int main(){
     /* Print using just the standard way everyone does */
@@ -35,26 +32,24 @@ int main(){
 
     for(i=0; i<6; i++){
         printf("%c", hello[i]);
-        /* strcpy(helloworld, hello[i]); */
     }
     printf(" ");
     strcpy(helloworld, " ");
 
     for(i=0; i<6; i++){
         printf("%c", world[i]);
-        /* strcpy(helloworld, world[i]); */
     }
     printf("\n");
-    /* printf("%s\n", helloworld); */
 
     /* Print by just assigning a string using the string library */
     strcpy(hw, "Hello World");
     printf("%s\n", hw);
 
-    /* WIP - Getting user input for strings/chars */
-    /* fgets(user_input, sizeof(user_input), stdin); */
-    /* sscanf(user_input, "%c", &first_name); */
-    /* printf("Hello, %s\n", first_name); */
+
+    printf("Enter name: ");
+    fgets(f_name, sizeof(f_name), stdin);
+    f_name[strlen(f_name)-1] = '\0';
+    printf("Hello %s!\n", f_name);
 
     return(0);
 }
