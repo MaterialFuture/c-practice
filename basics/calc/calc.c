@@ -17,36 +17,49 @@ int main() {
         fgets(input, sizeof(input), stdin);        /* Get user input */
         sscanf(input, "%c %d", &operator, &value); /* Scan input and store in appropriate variables */
 
-        if ((operator == 'q') || (operator == 'Q')) { /* q =quit */
+        if ((operator == 'q') || (operator == 'Q')) /* q =quit *\/ */
             printf("Quiting...\n");
-            break;
-        } else if (operator == '+') { /* Adds */
-            result += value;
-        } else if (operator == '-') { /* Subtract */
-            result -= value;
-        } else if (operator == '*') { /* Multiply */
-            result *= value;
-        } else if (operator == '/') { /* Divide */
-            if (value == 0) { /* If divide by zero then print error */
-                printf("Error: Cannot Divide by Zero, sorry bud \n");
-            } else {          /* If not zero then go ahead */
+        switch (operator) {
+            case '+':
+                result += value;
+                break;
+            case '-':
+                result -= value;
+                break;
+            case '*':
+                result += value;
+                break;
+            case '/':
+                if (value == 0) { /* If divide by zero then print error */
+                    printf("Error: Cannot Divide by Zero, sorry bud \n");
+                } else {          /* If not zero then go ahead */
                 result /= value;
             }
-        } else { /* If operator isn't one of four specified above then print error */
-            printf("Unknown operator: %c\n", operator);
+                break;
+            default:
+                printf("Unknown operator: %c\n", operator);
+                break;
         }
 
-    /* Turn into Switch case for better performance on memory imo */
-    /*     switch (operator) { */
-    /*         case '+': */
-    /*             result += value; */
-    /*         case '-': */
-    /*             result -= value; */
-    /*         case '*': */
-    /*             result += value; */
-    /*         case '/': */
-    /*             result /= value; */
-    /*     } */
+        /* NOTE: If/Else Version */
+        /* if ((operator == 'q') || (operator == 'Q')) { /\* q =quit *\/ */
+        /*     printf("Quiting...\n"); */
+        /*     break; */
+        /* } else if (operator == '+') { /\* Adds *\/ */
+        /*     result += value; */
+        /* } else if (operator == '-') { /\* Subtract *\/ */
+        /*     result -= value; */
+        /* } else if (operator == '*') { /\* Multiply *\/ */
+        /*     result *= value; */
+        /* } else if (operator == '/') { /\* Divide *\/ */
+        /*     if (value == 0) { /\* If divide by zero then print error *\/ */
+        /*         printf("Error: Cannot Divide by Zero, sorry bud \n"); */
+        /*     } else {          /\* If not zero then go ahead *\/ */
+        /*         result /= value; */
+        /*     } */
+        /* } else { /\* If operator isn't one of four specified above then print error *\/ */
+        /*     printf("Unknown operator: %c\n", operator); */
+        /* } */
 
     }
 }
