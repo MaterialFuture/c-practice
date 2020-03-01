@@ -1,0 +1,7 @@
+# If the top most .editorconfig then true
+root = true
+
+# 2 spaces for C
+[*.c]
+indent_style = spaces
+indent_size = 2
