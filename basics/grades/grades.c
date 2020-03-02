@@ -9,7 +9,7 @@ char  std_name[20];        /* Student Name */
 int   grades[] = {96, 73, 100, 97, 78}; /* Add grades here */
 int   grade_amount;        /* Ammount of items in array */
 int   grade_total = 0;     /* The sum of grades. */
-float grade_avg;           /* The l ammount of the grades. */
+double grade_avg;           /* The l ammount of the grades. */
 int   i;                   /* The counter for the loop */
 char  ltr_grade[] = {      /* Letter Grades stored as an array */
  'A', 'B', 'C', 'D', 'F'
@@ -45,20 +45,18 @@ char grade_check(float grade) { /* A function to convert grade to letter grade *
 }
 
 int main() {
-  printf("%d\n", sum(grades, grade_arr_size)); /*Get sum of all*/
-
-  printf("Enter Name: ");
+  printf("Enter Name: "); /*Enter Users Name and save temp as string*/
   fgets(std_name, sizeof(std_name), stdin);
   std_name[strlen(std_name)-1] = '\0'; /* Removes newline at the end of string/char array */
 
-  /* strcpy(std_name, "Jim");                        // Set the kid's name */
   printf("Pulling information for student, %s...\n", std_name); // %s accepts a string into the string interpolation, %d would be for ints
 
   /* Calculate/Print grades */
+  grade_total = sum(grades, grade_arr_size);
   printf("Calculating grades...\n");
-  printf("\nGrade Total: %d\n", grade_total);
+  printf("Grade Total: %d\n", grade_total);
   printf("Number Of Grades: %d\n", grade_arr_size);
-  grade_avg = grade_total / grade_amount;
+  grade_avg = grade_total / grade_arr_size;
   printf("Your Average: %f\n", grade_avg); /* Print grade average, note the string interpolation */
   printf("Your letter grade: %c\n", grade_check(grade_avg));
   printf("Keep up the good work %s\n", std_name);
