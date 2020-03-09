@@ -3,6 +3,7 @@
 /* Description: Showing off how defines are handled, without getting into the Pascal stuff */
 /*******************************************************************************************/
 #include <stdio.h>
+#define SQR(x) (x * x) /* Square numbers input here */
 /* Globally define the size of arrays
  * #define SIZE 10
  * can alternatively be replaced with a constant variable,
@@ -21,7 +22,7 @@ int main() {
   for (i = 1; i <= SIZE; i++) { /* simple for loop to map data to arrays 1-10 */
     data[i] = i;      /* 1, 2, 3, 4, ... */
     twice[i] = i * 2; /* 2, 4, 6, 8, ... */
-    square[i] = i * i;
+    square[i] = SQR(i);
     printf("%d\t%d\t%d\n", data[i], twice[i], square[i]);
   }
 

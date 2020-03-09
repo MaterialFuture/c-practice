@@ -16,6 +16,7 @@ char  ltr_grade[] = {      /* Letter Grades stored as an array */
 };
 int grade_arr_size = sizeof(grades) / sizeof(int); //Get how many are in array by getting byte value array and dividing by size of int
 
+/* Recursive function to get sum of all numbers in array */
 int sum(int arr[], int last) {
   if (last <= 0)
     return 0;
