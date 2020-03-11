@@ -31,10 +31,30 @@ int main() {
          ); /* Should print out 1 */
 
   int count = 0;
-  while(count < 10)
+  const int CNT_MAX = 10;
+
+  while(count < CNT_MAX)
     inc_count(&count);
 
   printf("Count:\t%d\n", count);
+
+
+  const char *answer_ptr = "Forty-Two"; /* The pointer is set to a constant */
+  answer_ptr = "Fifty-One";             /* The variable is not */
+  printf("Answer:\t%s\n", answer_ptr);
+
+  printf("Test line\n");
+
+  /* char *const name_ptr = "Test"; */
+  /* *name_ptr = 'B'; */
+  /* printf("Answer:\t%c\n", *name_ptr); */
+  /* causes a seg fault, is supposed to change to a char 'B' */
+
+  const char *const title_ptr = "Title"; /* Creates a const that cannot be changed like a normal variable, or by pointer */
+  printf("%s\n", title_ptr);             /* Should be "Title" */
+
+
+
   return 0;
 }
 
