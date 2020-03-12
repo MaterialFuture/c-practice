@@ -8,6 +8,7 @@ My main goal is to type everything out so I can get accustomed to writing C and
 have it feel more natural.
 
 ## Project Info
+
 Some info on the files that I'm practicing with, they should also contain proper
 commenting that explain some more of course.
 
@@ -20,8 +21,10 @@ commenting that explain some more of course.
 - Etc.
   - The rest will follow the same sort of format
 
-**Please Note** Once I complete this book I'll most likely create another
-directory called `modern` to differentiate from the C99 things.
-    
-Along-side this I'm learning Emacs, to which I'll be getting accustomed to how
-GCC, Emacs, and C all play nice with one another.
+
+### Note
+
+I've Started reading on C11 and some modern practices, so once I'm nearing the
+end of the book I'll start on the `modern` directory. 
+
+
