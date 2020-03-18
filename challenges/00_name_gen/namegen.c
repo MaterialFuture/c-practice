@@ -16,41 +16,35 @@ const int rand_num(int min_num, int max_num) {       /* A function that simply c
   return result;                                     /* return value desired */
 }
 
-#define MAX_NUM 5   /* Change this to be user input */
-const char first_name_arr[MAX_NUM][10] = {
+/* Change this to be user input */
+#define MAX_OBJ 5 /* Max Number of objects to be stored in array, not really important currently */
+#define MAX_NUM 10 /* Max Number of characters to be in said object */
+const char first_name_arr[MAX_OBJ][MAX_NUM] = {
   "Jim", "Bill", "John", "Joe", "Richard",
 }; /* First name to print */
-const char last_name_arr[MAX_NUM][10] = {
-  "Shoemaker", "Smith", "Richards", "Black"
+const char last_name_arr[MAX_OBJ][MAX_NUM] = {
+  "Shoemaker", "Smith", "Richards", "Black", "Wizard"
 }; /* Generated name, mostly to set the pointer */
 
-/* Setup pointers */
-/* const char *f_name_arr_ptr = &first_name_arr; */
+struct user_data {
+  char first_name[MAX_NUM];
+  char last_name[MAX_NUM];
+  int64_t phone;
+} random_user;
 
-char create_random_user(void) {    /* Setup data to create new random user data */
-  const int r = rand_num(0,5);     /* Random number from 0...20 */
-  struct user_data {
-    char first_name[MAX_NUM][10];
-    char last_name[MAX_NUM][10];
-  };
-  struct user_data random_user = { /* Create structure of user_data for random_data */
-    first_name_arr[r][10],         /* Ger random object in array */
-    last_name_arr[r][10],
-  };
-
-  return random_user;              /* Return the whole struct, doesn't work currently */
-}
 /* Extras: Other forms of Credentials such as ;@name, Phone, Address */
 int main(void) {
+  const int r = rand_num(0,5);     /* Random number from 0...20 */
+  strcpy(random_user.first_name, first_name_arr[r]);
+  strcpy(random_user.last_name, last_name_arr[r]);
 
-  #define usr random_user
   printf("First Name:\t%s\nLast Name:\t%s\n", /* Layour in tabular fashion */
-         usr.first_name[0],                           /* Random First Name */
-         usr.last_name[0]                            /* Random Last Name */
+         random_user.first_name,           /* Random First Name */
+         random_user.last_name             /* Random Last Name */
   );
+
   return 0;
 }
 
 /* NOTE: Working on making this more robust, utilizing structs and pointers to make it works more like a real world applications  */
-
 /* NOTE: Currently doesn't compile, still working on setting up pointers */
