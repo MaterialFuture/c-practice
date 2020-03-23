@@ -1,4 +1,8 @@
-#define _GNU_SOURCE /* using getline from GNU source */
+/*****************************************************************************************/
+/* Title: Mock Database                                                                  */
+/* Desc: Creating A database out of a text file. Showing off what I know of IO and such. */
+/*****************************************************************************************/
+#define _GNU_SOURCE /* using getline from GNU source, I believe it's posix compliant now but just to be safe. */
 #include <string.h>
 #include <stdio.h>
 #define STRING_LENGTH 80
@@ -29,7 +33,7 @@ int main() {
 
 int lookup(char const *const name) {
   /* int ch; */
-  int i;
+  int i = 0;
   char *line = NULL;
   size_t len = 0;
   ssize_t read;
@@ -45,20 +49,29 @@ int lookup(char const *const name) {
   /* file found, now check each line */
   while ((read = getline(&line, &len, in_file)) != -1) { /* getline gets all lines in the file*/
     line[strlen(line) - 1] = '\0';
-    /* printf("len: %ld\n", len); */
-    /* printf("read: %ld\n", read); */
-    printf("%s\n", line); /* Print each line, move this to another function to print out as debug */
-    names[i] = line;
+    #ifdef DEBUG
+    printf("len: %ld\n", len);                           /* Added debug to see if data is coming out correctly */
+    printf("read: %ld\n", read);
+    #endif // DEBUG
+    printf("%s\n", line);                                /* Print each line */
+    names[i] = line;                                     /* Assign to array of names - NOTE doesn't currently work */
+    i++;                                                 /* NOTE This should increment for every iteration of the
+                                                          * while loop but it's not */
   }
-  /*Debug*/
-  for (i=0; i<5; ++i){
+
+  /* Debug - To see all objects in array*/
+  #ifdef DEBUG
+  for (i=0; i<5; i++){
     printf("%s\n", names[i]);
   }
-  for (i=0; names[i] != NULL; ++i){
+  #endif // DEBUG
+
+  for (i=0; names[i] != NULL; i++){
     if (strcmp(names[i], name) == 0)
       return (1);
   }
-  /* free(line); */
+
+  /* free(line); NOTE I don't think freeing the line is needed in C99, the compiler tells me so I obey T_T */
   fclose(in_file);
   return 0;
 }
